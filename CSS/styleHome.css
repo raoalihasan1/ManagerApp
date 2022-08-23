@@ -1,0 +1,197 @@
+body {
+    overflow-y: visible !important;
+}
+
+.homeContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    margin: 1em 3em;
+}
+
+.lowerContainer, .upperContainer {
+    padding: 2em;
+    border-radius: 1.125em;
+    background: #242526;
+    margin: 0.75em 1em;
+    font-size: 0.775em;
+    font-weight: 400;
+    letter-spacing: 0.0625em;
+    color: #FFF;
+    opacity: 0.825;
+    box-shadow: rgb(0, 0, 0) 0px 20px 30px -10px;
+    cursor: default;
+}
+
+.lowerContainer {
+    width: 19.75em;
+    height: 15em;
+}
+
+.upperContainer.slideShow {
+    width: 43em;
+    height: 24.675em;
+    padding: 0;
+    position: relative;
+}
+
+.upperContainer.aboutUs {
+    width: 40em;
+    height: 24.675em;
+}
+
+.lowerContainer:hover, .upperContainer:hover {
+    transform: scale(1.0125);
+}
+
+.HomeContainer .upperContainer.slideShow .Indicators {
+    text-align: center;
+    padding: 0.5em 0.625em;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+.homeContainer .upperContainer.slideShow .Indicators .Indicator {
+    height: 0.75em;
+    width: 3em;
+    margin: 0 0.25em;
+    background-color: #A3A0A0;
+    border-radius: 0.625em;
+    display: inline-block;
+    transition: background-color 0.5s ease;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+    animation: fadeSlide 0.5s ease-in-out 0s;
+    -moz-animation: fadeSlide 0.5s ease-in-out 0s;
+    -webkit-animation: fadeSlide 0.5s ease-in-out 0s;
+}
+
+.homeContainer .upperContainer.slideShow .fadeSlide {
+	display: none;
+}
+
+.HomeContainer .upperContainer.slideShow .fadeSlide img {
+    vertical-align: middle;
+    height: 24.675em;
+	border-radius: 1.125em;
+    animation: fadeSlide 0.5s ease-in-out 0s;
+    -moz-animation: fadeSlide 0.5s ease-in-out 0s;
+    -webkit-animation: fadeSlide 0.5s ease-in-out 0s;
+}
+
+@keyframes fadeSlide {
+    from {opacity: 0.25} 
+    to {opacity: 1}
+}
+
+@-moz-keyframes fadeSlide {
+    from { -moz-opacity: 0.25 }
+    to { -moz-opacity: 1 }
+ }
+ 
+@-webkit-keyframes fadeSlide {
+    from { -webkit-opacity: 0.25 }
+    to { -webkit-opacity: 1 }
+}
+
+.getStarted {
+    padding: 0.875em 1.125em;
+    border-radius: 1.25em;
+    outline: none;
+    border: none;
+    letter-spacing: 0.075em;
+    font-weight: 500;
+    font-size: 1em;
+    margin: 3em auto 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    color: #FFF;
+    background-image: linear-gradient(to right, #f85032 0%, #e73827  51%, #f85032  100%);
+    transition: 0.75s;
+    background-size: 200% auto;
+    cursor: pointer;
+    box-shadow: rgba(0, 0, 0, 0.375) 0px 7px 29px 0px;
+    position: relative;
+}
+
+.getStarted span {    
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+}
+  
+.getStarted span:after {
+    content: '\00bb';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -1.5em;
+    transition: 0.5s;
+}
+  
+.getStarted:hover span {
+    padding-right: 1.25em;
+}
+  
+.getStarted:hover span:after {
+    opacity: 1;
+    right: 0;
+}
+
+.getStarted:hover {
+    background-position: right center;
+    color: #FFF;
+}
+
+.upperContainer.aboutUs h4 {
+    font-size: 2.125em;
+    font-weight: 500;
+    text-align: center;
+    letter-spacing: 0.125em;
+    margin-bottom: -0.875em;
+}
+
+.upperContainer.aboutUs hr {
+    border: 0;
+    text-align: center;
+    display: block;
+}
+
+.upperContainer.aboutUs hr:before {
+    content: "•••••";
+    font-size: 3.5em;
+    color: #FFF;
+    letter-spacing: 0.175em;
+    opacity: 0.875;
+}
+
+.upperContainer.aboutUs p {
+    font-size: 0.95em;
+    letter-spacing: 0.08em;
+    font-weight: 400;
+    padding: 0 0.75em;
+    text-align: justify;
+    margin-top: -0.875em;
+}
+
+.upperContainer.aboutUs .companyLogo {
+    color: #FFF;
+    letter-spacing: 0.125em;
+    font-size: 1.75em;
+    font-family: 'Secular One', sans-serif;
+    cursor: default;
+    text-align: center;
+    margin: 0.75em 0;
+}
+
+@media (max-width: 800px) {
+
+    .upperContainer, .lowerContainer {
+        margin: 1em auto;
+    }
+
+  }

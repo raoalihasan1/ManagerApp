@@ -1,0 +1,387 @@
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    overflow-y: visible !important;
+    margin: 0 auto;
+}
+
+.linksContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    margin: 1em 0;
+}
+
+.linksContainer .allLinks {
+    width: 35em;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.chatBotContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: 50em;
+    left: 50%;
+    top: -50%;
+}
+
+.formContainer {
+    padding: 1em;
+    border-radius: 1.125em;
+    background-color: #FFF;
+    margin: 1em;
+    box-shadow: rgb(0, 0, 0) 0px 20px 30px -10px;
+    width: 31.775em;
+    height: 29.325em;
+    margin-left: -10px;
+}
+
+.formContainer form {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.formContainer form h3 {
+    font-size: 1.675em;
+    text-align: center;
+    font-weight: 700;
+    letter-spacing: 0.0925em;
+    margin-bottom: 0.125em;
+}
+
+.formContainer form h6 {
+    font-size: 0.875em;
+    font-weight: 400;
+    text-align: center;
+    margin-bottom: 0.5em;
+    opacity: 0.5;
+    letter-spacing: 0.0925em;
+}
+
+.errorsContainer {
+    margin: 0 auto 0.5em;
+	height: auto;
+	width: 67.5%;
+	background-color: #F8A1A1;
+	border-radius: 0.875em;
+	border: 0.125em solid #E74C3C;
+    display: block;
+    padding: 0.25em 0;
+}
+
+.errorsContainer .errorMessage {
+    color: #E74C3C;
+    font-size: 0.625em;
+    font-weight: 500;
+    letter-spacing: 0.0875em;
+    padding: 0.1875em 1.25em;
+}
+
+form input {
+    width: 67.5%;
+    height: 2.5%;
+    border: none;
+    outline: none;
+    margin: 2px auto;
+    display: block;
+}
+
+form textarea {
+    width: 67.5%;
+    border: none;
+    outline: none;
+    margin: 7.5px auto 2px;
+    resize: none;
+    height: 2.5%;
+    min-height: 2.5%;
+    overflow-y: scroll;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    display: block;
+    line-height: 1.25em;
+}
+
+form textarea::-webkit-scrollbar {
+    display: none;
+}
+
+form input[type="text"], form textarea {
+    border-bottom: 2px solid #BBB;
+    font-size: 0.85em;
+    font-weight: 400;
+    letter-spacing: 0.075em;
+    padding: 1.25em;
+    background: none;
+}
+
+form input[type="submit"] {
+    font-size: 1.025em;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    border-radius: 0.675em;
+    background: #242526;
+    color: #FFF;
+    height: 2.5em;
+    min-height: 2.5em;
+    cursor: pointer;
+    margin-bottom: 1em;
+    transition: transform 100ms ease-in-out;
+    transition: 0.5s ease-in-out;
+    margin: 0.5em auto;
+}
+
+form input[type="submit"]:active {
+    transform: scale(0.5);
+}
+
+form input[type="submit"]:hover {
+    opacity: 0.925;
+}
+
+form label {
+    position: absolute;
+    left: 19.675%;
+    top: 50%;
+    transform: translateY(-50%);
+    font-weight: 400;
+    font-size: 0.825em;
+    opacity: 0.65;
+    letter-spacing: 0.05em;
+    transition: 0.375s;
+}
+
+form .currentField + label {
+    font-size: 0.65em;
+    top: 10px;
+    opacity: 0.5;
+}
+
+form .currentField + label[for="messageContent"] {
+    top: 8.875px;
+}
+
+form .inputClass {
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    color: #18191A;
+    margin: -0.25em auto;
+}
+
+.linksContainer .innerContainer {
+    padding: 2em;
+    border-radius: 1.125em;
+    background: #242526;
+    margin: 1em;
+    font-size: 0.775em;
+    font-weight: 400;
+    letter-spacing: 0.0625em;
+    color: #FFF;
+    opacity: 0.825;
+    box-shadow: rgb(0, 0, 0) 0px 20px 30px -10px;
+    cursor: default;
+    width: 19.5em;
+    height: 17.875em;
+    cursor: pointer;
+}
+
+.linksContainer .innerContainer:hover {
+    transform: scale(1.0125);
+}
+
+.innerContainer {
+    font-size: 3em;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.innerContainer i {
+    font-size: 10em;
+    color: white;
+}
+
+.innerContainer i:hover {
+    opacity: 0.75;
+}
+
+.chatBoxCollapse {
+    position: fixed;
+    bottom: 0;
+    box-shadow: rgb(0, 0, 0) 0px 20px 30px -10px;
+}
+
+.collapseBtn {
+    background: #242526;
+    color: #FFF;
+    cursor: pointer;
+    padding: 0.5em 1em;
+    width: 20em;
+    text-align: left;
+    outline: none;
+    font-size: 1em;
+    font-weight: 500;
+    border-radius: 0.625em 0.625em 0 0;
+    border: 0.15625em solid #FFF;
+    border-bottom: none;
+    letter-spacing: 0.05em;
+}
+
+.collapseBtn p {
+    display: inline;
+    padding-left: 57.5%;
+}
+
+.chatBoxContent {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.375s ease-in-out;
+}
+
+.fullChatBox {
+    width: 20em;
+    background: #FFF;
+    text-align: center;
+    overflow: auto;
+    scrollbar-width: none;
+    height: max-content;
+    transition: max-height 0.375s ease-in-out;
+}
+
+.outerContainer {
+    min-height: 22.5em;
+    bottom: 0%;
+    position: relative;
+}
+
+.chatContainer {
+    max-height: 22.5em;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+    hyphens: auto;
+}
+
+.chatContainer::-webkit-scrollbar {
+    display: none;
+}
+
+.userInputBlock {
+    display: flex;
+    float: left;
+    box-sizing: border-box;
+    justify-content: space-between;
+    width: 100%;
+    background-color: #EBEBEB;
+    border-radius: 0.625em 0.625em 0 0;
+    align-items: center;
+    padding: 0.75em 0 0.75em 0.75em;
+}
+
+.chatBarIcons {
+    display: flex;
+    justify-content: space-evenly;
+    box-sizing: border-box;
+    width: 30%;
+    float: right;
+    font-size: 1.075em;
+    padding-right: 0.75em;
+}
+
+#chatIcon:hover {
+    opacity: 0.75;
+    cursor: pointer;
+}
+
+#textInput {
+    width: 97.5%;
+}
+
+.inputBox {
+    float: left;
+    border: none;
+    box-sizing: border-box;
+    width: 100%;
+    border-radius: 0.625em;
+    padding: 0.625em;
+    font-size: 0.75em;
+    color: #000;
+    background: #FFF;
+    outline: none;
+    font-weight: 400;
+    letter-spacing: 0.025em;
+}
+
+.userInput {
+    color: #FFF;
+    text-align: right;
+    letter-spacing: 0.025em;
+}
+
+.botTxt {
+    color: #000;
+    text-align: left;
+    letter-spacing: 0.025em;
+}
+
+.userInput span,.botTxt span {
+    line-height: 1.5em;
+    display: inline-block;
+    padding: 0.75em 1em;
+    border-radius: 0.5em;
+    max-width: 80%;
+    margin-bottom: 0.5em;
+    animation: floatUp 0.5s forwards;
+    font-weight: 400;
+    font-size: 0.725em;
+}
+
+.userInput span {
+    border-bottom-right-radius: 0.125em;
+    background-color: #5CA6FA;
+    margin-right: 0.5em;
+}
+
+.botTxt span {
+    border-bottom-left-radius: 0.125em;
+    background: #E0E0E0;
+    margin-left: 0.5em;
+}
+
+#timeStamp {
+    font-size: 0.675em;
+    padding: 0.5em;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+}
+
+@keyframes floatUp {
+    from {
+        transform: translate(0.875em);
+        opacity: 0;
+    }
+    to {
+        transform: translate(0);
+        opacity: 1;
+    }
+}

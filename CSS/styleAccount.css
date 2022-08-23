@@ -1,0 +1,340 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Secular+One&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins',  sans-serif;
+    text-decoration: none;
+    list-style-type: none;
+}
+
+body {
+    background: #18191A;
+    width: 100vw;
+    height: 100%;
+    margin: 0 auto;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.Container {
+    width: 82.5%;
+    height: 90%;
+    background-color: #FFF;
+    border-radius: 1em;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    position: relative;
+    max-width: 90%;
+    max-height: 95%;
+    margin: 0 auto;
+}
+
+.formContainer {
+    position: absolute;
+    height: 100%;
+    top: 0;
+    transition: transform 0.75s ease-in-out;
+    transition: opacity 0.25s ease-in-out;
+}
+
+form {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+form h3 {
+    font-size: 2em;
+    text-align: center;
+    font-weight: 700;
+    letter-spacing: 0.0925em;
+    margin-bottom: 0.125em;
+}
+
+form h6 {
+    font-size: 0.875em;
+    font-weight: 400;
+    text-align: center;
+    margin-bottom: 1.5em;
+    opacity: 0.5;
+    letter-spacing: 0.0925em;
+}
+
+form input {
+    width: 67.5%;
+    height: 7.75%;
+    border: none;
+    outline: none;
+    margin: 2.75px auto;
+}
+
+form input[type="text"], form input[type="password"] {
+    border-bottom: 2px solid #BBB;
+    font-size: 0.825em;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    padding: 1.25em;
+    background: none;
+}
+
+form label {
+    position: absolute;
+    left: 19.5%;
+    top: 50%;
+    transform: translateY(-50%);
+    font-weight: 400;
+    font-size: 0.825em;
+    opacity: 0.65;
+    letter-spacing: 0.05em;
+    transition: 0.375s;
+}
+
+form .currentField + label {
+    font-size: 0.65em;
+    top: 10px;
+    opacity: 0.5;
+}
+
+form .inputClass {
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    color: #18191A;
+}
+
+form input[type="submit"] {
+    padding-top: 0.675em;
+    padding-bottom: 2.175em;
+    font-size: 1.025em;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    border-radius: 0.675em;
+    background: #242526;
+    color: #FFF;
+    cursor: pointer;
+    margin-bottom: 1em;
+    transition: transform 100ms ease-in-out;
+    transition: 0.5s ease-in-out;
+    margin: 7.5px auto;
+}
+
+form input[type="submit"]:active {
+    transform: scale(0.5);
+}
+
+form input[type="submit"]:hover {
+	background: #18191A;
+}
+
+form p {
+    text-align: center;
+    margin: 7.5px auto;
+}
+
+form p a {
+    color: #121212;
+    text-decoration: none;
+    font-size: 0.825em;
+    font-weight: 500;
+    opacity: 0.75;
+    letter-spacing: 0.075em;
+}
+
+.containerLeft {
+    left: 0;
+    z-index: 2;
+}
+
+.containerRight {
+    left: 0;
+    z-index: 1;
+    opacity: 0;
+}
+
+.containerLeft, .containerRight {
+    width: 50%;
+}
+
+.overlayContainer {
+    position: absolute;
+    top: 0;
+    width: 50%;
+    overflow: hidden;
+    z-index: 3;
+    height: 100%;
+    left: 50%;
+    transition: transform 0.75s ease-in-out;
+}
+
+.Overlays {
+    background: #242526;
+    position: relative;
+    height: 100%;
+    left: -100%;
+    width: 200%;
+    transform: translateX(0);
+    transition: transform 0.75s ease-in-out;
+    border-radius: 1em;
+}
+
+.overlayPanel {
+    position: absolute;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 50%;
+    text-align: center;
+    transform: translateX(0);
+    transition: all 0.75s ease-in-out;
+}
+
+.Right {
+    right: 0;
+    transform: translateX(0);
+}
+
+.Left {
+    transform: translateX(-25%);
+}
+
+.Container.currentlyRight .containerLeft {
+    transform: translateX(-125%);
+    opacity: 0;
+}
+
+.Container.currentlyRight .overlayContainer {
+    transform: translateX(-100%);
+}
+
+.Container.currentlyRight .containerRight {
+    transform: translateX(100%);
+    opacity: 1;
+    z-index: 2;
+}
+
+.Container.currentlyRight .Overlays {
+    transform: translateX(50%);
+}
+
+.Container.currentlyRight .Right {
+    transform: translateX(25%);
+}
+
+.Container.currentlyRight .Left {
+    transform: translateX(0);
+}
+
+.companyLogo {
+    color: #FFF;
+    letter-spacing: 0.125em;
+    font-size: 2.25em;
+    font-family: 'Secular One', sans-serif;
+    cursor: default;
+}
+
+.overlayContainer .Overlays p {
+    color: #FFF;
+    margin: 0.5em 4em;
+    letter-spacing: 0.1em;
+    font-size: 0.925em;
+    font-weight: 400;
+    max-width: 90%;
+    line-height: 1.625;
+}
+
+.overlayContainer .Overlays button {
+    padding: 0.65em 1.125em;
+    width: 40%;
+    background-color: transparent;
+    border: 3.25px solid #FFF;
+    font-size: 0.95em;
+    font-weight: 600;
+    letter-spacing: 0.175em;
+    border-radius: 0.675em;
+    cursor: pointer;
+    color: white;
+    margin: 0.95em 0.5em 1.875em;
+}
+
+.overlayContainer .Overlays message {
+    position: relative;
+    color: #FFF;
+    font-size: 0.625em;
+    opacity: 0.675;
+    top: 27.5%;
+    font-weight: 400;
+    letter-spacing: 0.05em;
+    padding: 0 3em;
+} 
+
+.errorsContainer {
+    margin: 0 auto 1rem;
+	height: auto;
+	width: 67.5%;
+	background-color: #F8A1A1;
+	border-radius: 0.875em;
+	border: 0.125em solid #E74C3C;
+    display: block;
+    padding: 0.25em 0;
+}
+
+.errorsContainer .errorMessage {
+    color: #E74C3C;
+    font-size: 0.65em;
+    font-weight: 500;
+    letter-spacing: 0.0875em;
+    padding: 0.1875em 1.25em;
+}
+
+#googleLogInBtn {
+    margin: 0 auto;
+	height: auto;
+    transform: scale(0.575);
+}
+
+h2 {
+    width: 67.5%; 
+    text-align: center; 
+    border-bottom: 1px solid #000; 
+    line-height: 0.05em;
+    margin: 0.75em auto 0; 
+    opacity: 0.5;
+} 
+ 
+h2 span { 
+    color: 121212;
+    background:#FFF; 
+    padding:0 1.875em;
+    font-size: 0.7em;
+    font-weight: 500;
+}
+
+label[for="disabledEmailAddress"], label[for="disabledFullName"] {
+    font-size: 0.65em;
+    top: 10px;
+    opacity: 0.5;
+}
+
+i {
+    font-size: 1.75em;
+    color: #FFF;
+    cursor: pointer;
+    opacity: 0.75;
+}
+
+i:hover {
+    opacity: 0.5;
+}

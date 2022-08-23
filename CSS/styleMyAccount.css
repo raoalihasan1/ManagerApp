@@ -1,0 +1,1003 @@
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    overflow-y: visible !important;
+}
+
+.mainContainer, #notesPageContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: flex-start;
+    align-items: center;
+    position: relative;
+    margin: 1em 0;
+}
+
+.mainContainer > * {
+    box-shadow: rgb(0, 0, 0) 0px 20px 30px -10px;
+    padding: 2em;
+    border-radius: 1.125em;
+    background-color: #242526;
+    color: #FFF;
+    margin: 0.275em 1.25em 1.25em;
+    width: 32.5em;
+    position: relative;
+}
+
+.mainContainer > * > h4 {
+    font-size: 1.275em;
+    font-weight: 600;
+    letter-spacing: 0.075em;
+    text-align: center;
+}
+
+.mainContainer .notesContainer, .mainContainer .tasksContainer {
+    height: 18.375em;
+}
+
+.mainContainer .upComingEventsContainer, .mainContainer .storageContainer {
+    height: 12em;
+}
+
+#notesPageContainer #emptyNotes {
+    background-color: #242526;
+    width: 42.5em;
+    height: 17.75em;
+    min-height: 17.75em;
+    margin: 0.25em 1em;
+    border-radius: 1.125em;
+    box-shadow: rgb(0, 0, 0) 0px 20px 30px -10px;
+    letter-spacing: 0.075em;
+    color: #FFF;
+    font-weight: 500;
+    opacity: 0.5;
+    font-size: 1.375em;
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+}
+
+#notesPageContainer #emptyNotes i {
+    font-size: 1.375em;
+    padding-left: 0.75em;
+}
+
+#notesPageContainer #newNote {
+    border-radius: 50%;
+    background-color: #242526;
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    bottom: 0.65em;
+    position: fixed;
+    font-size: 2em;
+    padding: 0.5em;
+    box-shadow: rgb(0, 0, 0) 0px 20px 30px -10px;
+    color: #FFF;
+    opacity: 0.5;
+    cursor: pointer;
+    animation: slideUp 0.625s ease-in 0s;
+    z-index: 50;
+}
+
+#notesPageContainer #newNote i {    
+    display: inline-block;
+    position: relative;
+    transition: 0.625s;
+}
+
+#notesPageContainer #newNote i:after {
+    content: 'new note';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -1em;
+    transition: 0.625s;
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    text-align: center;
+    padding: 1em;
+    font-size: 0.375em;
+    letter-spacing: 0.05em;
+}
+  
+#notesPageContainer #newNote:hover i {
+    padding-right: 6.25em;
+}
+
+#notesPageContainer #newNote:hover {
+    border-radius: 1.5em;
+}
+  
+#notesPageContainer #newNote:hover i:after {
+    opacity: 1;
+    right: 0;
+}
+
+#notesPageContainer .notesControl #myNote {
+    width: auto;
+    height: 25em;
+    padding: 1.5em 2.5em;
+    border-radius: 1.125em;
+    box-shadow: rgb(0, 0, 0) 0px 20px 30px -10px;
+    color: #FFF;
+    margin: auto 0.75em;
+}
+
+#notesPageContainer .notesControl {
+    display: flex;
+    flex-direction: row;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    width: 97.5%;
+    -ms-overflow-style: none;
+    scrollbar-width: none; 
+    outline: none;
+    padding: 0 0 3em;
+}
+
+#notesPageContainer .notesControl::-webkit-scrollbar, #notesPageContainer .notesControl #myNote .theNote::-webkit-scrollbar, #newNoteContainer #newNoteForm form #Note::-webkit-scrollbar, table .recentNote::-webkit-scrollbar, .allTasksContainer .allTasks .scheduledTasks::-webkit-scrollbar, .allTasksContainer .allTasks::-webkit-scrollbar {
+    display: none;
+}
+
+#notesPageContainer .notesControl #myNote .noteTitle {
+    text-align: center;
+    font-weight: 600;
+    padding: 0 0 1em;
+    font-size: 1.175em;
+    letter-spacing: 0.075em;
+    opacity: 0.925;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+#notesPageContainer .notesControl #myNote .noteTitle .lastUpdated {
+    display: inline;
+    margin-left: 2.5em;
+    font-weight: 500;
+    font-size: 0.675em;
+    letter-spacing: 0.1em;
+    opacity: 0.675;
+}
+
+#notesPageContainer .notesControl #myNote .theNote {
+    font-weight: 400;
+    font-size: 0.8em;
+    letter-spacing: 0.0625em;
+    opacity: 0.85;
+    text-overflow: ellipsis;
+    height: 21.25em;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    white-space: nowrap;
+    -ms-overflow-style: none;
+    scrollbar-width: none; 
+}
+
+#notesPageContainer .notesControl #myNote form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+#notesPageContainer .notesControl #myNote > form > button {
+    float: left;
+    padding: 0.675em;
+    border-radius: 1.125em;
+    border: none;
+    outline: none;
+    color: #FFF;
+    background-color: transparent;
+    opacity: 0.75;
+    cursor: pointer;
+    letter-spacing: 0.075em;
+    font-weight: 500;
+    font-size: 0.875em;
+    transition: 0.625s;
+    background-size: 200% auto;
+    position: absolute;
+    bottom: -3em;
+}
+
+#notesPageContainer .notesControl #myNote > form > button > i {
+    padding-right: 0.5em;
+    font-size: 0.925em;
+}
+
+#notesPageContainer .notesControl #myNote > form > button:hover {
+    opacity: 0.375;
+}
+
+#notesPageContainer .notesControl #myNote form .editNote {
+    margin-left: -6.25em;
+}
+
+#notesPageContainer .notesControl #myNote form .deleteNote {
+    margin-left: 6.25em;
+}
+
+#newNoteContainer {
+    background-color: #000;
+    height: 100vh;
+    width: 100vw;
+    z-index: 25;
+    position: absolute;
+    top: 0;
+    display: none;
+    display: none;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    opacity: 0.875;
+}
+
+#newNoteContainer #newNoteForm {
+    width: 45em;
+    height: 30em;
+    background-color: #242526;
+    opacity: 1;
+    border-radius: 1.125em;
+    border: 1.5px solid white;
+    margin-top: -5em;
+    box-shadow: rgb(0, 0, 0) 0px 20px 30px -10px;
+}
+
+#newNoteContainer #newNoteForm form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    flex-direction: column;
+}
+
+#newNoteContainer #newNoteForm form #noteTitle {
+    width: 100%;
+    padding: 2.125em 2.125em;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    font-size: 1.05em;
+    letter-spacing: 0.075em;
+    font-weight: 600;
+    color: #FFF;
+    opacity: 0.925;
+}
+
+#newNoteContainer #newNoteForm form #Note {
+    width: 100%;
+    padding: 0 2.55em;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    font-size: 0.9125em;
+    letter-spacing: 0.05em;
+    font-weight: 400;
+    line-height: 1.25em;
+    color: #FFF;
+    opacity: 0.975;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    -ms-overflow-style: none;
+    scrollbar-width: none; 
+}
+
+#newNoteContainer #newNoteForm form .btnContainer {
+    width: 100%;
+    padding: 0 2em;
+    height: 4.27em;
+    max-height: 4.27em;
+    background: transparent;
+}
+
+#newNoteContainer #newNoteForm form .btnContainer .btnForForm, #newNoteContainer #newNoteForm form .btnContainer .btnForStyle {
+    width: 50%;
+    height: 4.27em;
+    max-height: 4.27em;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+}
+
+#newNoteContainer #newNoteForm form .btnContainer .btnForStyle {
+    float: left;
+    cursor: pointer;
+    transition: 0.5s ease-in-out;
+    border-radius: 0.75em;
+    width: 19em;
+    height: 2.5em;
+    margin: 1em 0;
+    display: flex;
+    justify-content: center;
+}
+
+#newNoteContainer #newNoteForm form .btnContainer .btnForStyle label {
+    font-size: 0.875em;
+    opacity: 0.75;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    color: #DADCE0;
+    cursor: pointer;
+}
+
+#newNoteContainer #newNoteForm form input::placeholder, #newNoteContainer #newNoteForm form textarea::placeholder {
+    color: #DADCE0;
+    opacity: 1;
+}
+  
+#newNoteContainer #newNoteForm form input::-ms-input-placeholder, #newNoteContainer #newNoteForm form textarea::-ms-input-placeholder {
+    color: #DADCE0;
+}
+
+#newNoteContainer #newNoteForm form .btnContainer .btnForForm {
+    float: right;
+}
+
+#newNoteContainer #newNoteForm form .btnContainer .btnForForm button {
+    font-size: 0.875em;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    width: 7em;
+    height: 2.5em;
+    border-radius: 0.75em;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    background: transparent;
+    color: #DADCE0;
+    transition: 0.5s ease-in-out;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    box-sizing: border-box;
+    margin: 0 1em;
+}
+
+#newNoteContainer #newNoteForm form .btnContainer .btnForStyle input {
+    width: 2.25em;
+    height: 2.5em;
+    outline: none;
+    cursor: pointer;
+    border: none;
+    margin: 0 1em;
+    border-radius: 50%;
+    background-color: transparent;
+}
+
+.btnForStyle input::-webkit-color-swatch {
+    border-radius: 50%;
+    outline: none;
+    border: 2.5px solid #DADCE0;
+}
+
+.btnForStyle input::-moz-color-swatch {
+    border-radius: 50%;
+    outline: none;
+    border: 2.5px solid #DADCE0;
+}
+
+#newNoteContainer #newNoteForm form .btnContainer .btnForForm button:hover, #newNoteContainer #newNoteForm form .btnContainer .btnForStyle:hover {
+    background: rgba(154, 160, 166, 0.15);
+}
+
+#newNoteContainer #newNoteForm form .btnContainer .btnForForm button i {
+    padding-right: 0.5em;
+}
+
+table {
+    width: 27.5em;
+    margin-top: 1em;
+}
+
+table .recentTitle {
+    font-size: 0.975em;
+    display: inline-block;
+    color: #FFF;
+    font-weight: 700;
+    letter-spacing: 0.075em;
+    opacity: 0.85;
+    margin-bottom: 0.175em;
+}
+
+table .recentLastUpdated {
+    font-size: 0.7em;
+    opacity: 0.675;
+    color: #FFF;
+    letter-spacing: 0.075em;
+    float: right;
+    font-weight: 600;
+}
+
+table .recentNote {
+    font-size: 0.75em;
+    display: block;
+    color: #FFF;
+    font: 400;
+    height: 2.675em;
+    text-overflow: ellipsis;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    min-height: 2.675em;
+    max-height: 2.675em;
+    opacity: 0.675;
+    letter-spacing: 0.0675em;
+    white-space: nowrap;
+    line-height: 1.375em;
+    margin-bottom: 0.675em;
+}
+
+@keyframes slideUp {
+    from {opacity: 0; bottom: -1em}
+    to {opacity: 0.5; bottom: 0.65em}
+}
+
+@-webkit-keyframes displayOnScreen {
+    0% { transform: scale(0); opacity: 0; }
+    100% { transform: scale(1); opacity: 0.875; }
+}
+  
+@keyframes displayOnScreen {
+    0% { transform: scale(0); opacity: 0; }
+    100% { transform: scale(1); opacity: 0.875; }
+}
+
+@-webkit-keyframes removeFromScreen {
+    0% { -webkit-transform: scale(1); opacity: 0.875; }
+    100% { -webkit-transform: scale(0); opacity: 0; }
+}
+  
+@keyframes removeFromScreen {
+    0% { -webkit-transform: scale(1); opacity: 0.875; }
+    100% { -webkit-transform: scale(0); opacity: 0; }
+}
+
+.allTasksContainer {
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    margin: 1.75em 0;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-justify-content: space-evenly; 
+    justify-content: space-evenly;
+}
+
+.allTasksContainer .leftContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+}
+
+.allTasksContainer .leftContainer > *, .allTasksContainer .allTasks {
+    box-shadow: rgb(0, 0, 0) 0px 20px 30px -10px;
+    padding: 1.675em 2em;
+    border-radius: 1.125em;
+    background-color: #242526;
+    color: #FFF;
+    width: 35em;
+    height: 9.5em;
+    position: relative;
+}
+
+.allTasksContainer .leftContainer .newTasks {
+    margin-bottom: 1.5em;
+    height: 22.5em;
+}
+
+.allTasksContainer .leftContainer .nextTask {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+}
+
+.allTasksContainer .allTasks {
+    height: 33.5em;
+}
+
+.inputTask {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    margin: 0.75em 0;
+}
+
+.inputTask input[type="text"] {
+    width: 75%;
+    padding: 0.375em 1.5em;
+    outline: none;
+    border: none;
+    background-color: transparent;
+    letter-spacing: 0.0875em;
+    font-weight: 600;
+    font-size: 0.85em;
+    color: #FFF;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    border-bottom: 0.15em solid rgba(88, 91, 94, 0.25);
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box;
+    opacity: 0.75;
+}
+
+.inputTask label i {
+    font-size: 1.425em;
+    opacity: 0.5;
+    color: #FFF;
+    margin-right: 0.75em;
+}
+
+.inputTask input[type="datetime-local"] {
+    width: 69%;
+    padding: 0.375em 1.5em;
+    outline: none;
+    border: none;
+    background-color: transparent;
+    opacity: 0.75;
+    color: #FFF;
+    opacity: 0.375;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+.inputTask textarea {
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+    width: 67%;
+    resize: none;
+    padding: 0.75em 1.5em;
+    outline: none;
+    border: none;
+    background-color: #18191A;
+    letter-spacing: 0.0875em;
+    font-weight: 500;
+    border-radius: 0.5em; 
+    color: #FFF;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    opacity: 0.75;
+    font-size: 0.8125em;
+}
+
+.inputTask .multipleInput {
+    width: 75%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    position: relative;
+    margin: 1em 0;
+}
+
+.inputTask .multipleInput .selectOptions select {
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+    padding: 0.75em 1.5em;
+    background-color: #18191A;
+    font-size: 0.8125em;
+    color: #5E5E5E;
+    border: none;
+    font-weight: 500;
+    letter-spacing: 0.0875em;
+    width: 22.5em;
+    outline: none;
+    border-radius: 0.5em;
+    cursor: pointer;
+}
+
+label[for=selectPriority] {
+    font-size: 0.95em;
+    letter-spacing: 0.05em;
+    color: #5E5E5E;
+    font-weight: 600;
+}
+
+.inputTask .multipleInput .selectOptions .customArrow {
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: block;
+    background-color: #6A6A6A;
+    opacity: 0.9875;
+    height: 100%;
+    width: 2.75em;
+    pointer-events: none;
+    border-radius: 0 0.5em 0.5em 0;
+    cursor: pointer;
+}
+
+.inputTask .multipleInput .selectOptions .customArrow::before, .inputTask .multipleInput .selectOptions .customArrow::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    --size: 0.5em;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.inputTask .multipleInput .selectOptions .customArrow::before {
+    border-left: var(--size) solid transparent;
+    border-right: var(--size) solid transparent;
+    border-bottom: var(--size) solid rgba(255, 255, 255, 0.5);
+    top: 37.5%;
+}
+
+.inputTask .multipleInput .selectOptions .customArrow::after {
+    border-left: var(--size) solid transparent;
+    border-right: var(--size) solid transparent;
+    border-top: var(--size) solid rgba(255, 255, 255, 0.5);
+    top: 65%;
+}
+
+.inputTask .multipleInput .selectOptions {
+    position: relative;
+    width: 100%;
+    margin-left: 1em;
+    cursor: pointer;
+}
+
+.inputTask button {
+    position: relative;
+    width: 28.5%;
+    height: 2.375em;
+    border-radius: 0.5em;
+    outline: none;
+    border: none;
+    font-weight: 600;
+    letter-spacing: 0.075em;
+    font-size: 0.9em;
+    color: #FFF;
+    background: rgba(0, 136, 169, 0.725);
+    cursor: pointer;
+    transition: background 0.675s ease-in-out;
+}
+
+.inputTask button:hover {
+    background: rgba(0, 136, 169, 0.90);
+}
+
+#upcomingTitle {
+    font-weight: 600;
+    font-size: 0.975em;
+    letter-spacing: 0.09em;
+    opacity: 0.7;
+    position: relative;
+    display: inline-block;
+    white-space: nowrap;
+    margin-bottom: 0.05em;
+}
+
+#upcomingDate {
+    font-weight: 500;
+    font-size: 0.8em;
+    letter-spacing: 0.09em;
+    opacity: 0.625;
+    white-space: nowrap;
+    margin-bottom: 0.05em;
+}
+
+#upcomingDescription {
+    font-weight: 500;
+    font-size: 0.75em;
+    letter-spacing: 0.09em;
+    opacity: 0.5;
+    white-space: nowrap;
+    margin-bottom: 0.05em;
+}
+
+#upcomingPriority {
+    margin-right: 0.5em;
+}
+
+.allTasksContainer .leftContainer .nextTask h4, .allTasksContainer .allTasks h4 {
+    letter-spacing: 0.15em;
+    font-size: 1.25em;
+    margin-bottom: 0.375em;
+    opacity: 0.8;
+    font-weight: 600;
+    color: #5E5E5E;
+}
+
+.allTasksContainer .allTasks {
+    display: flex;
+    flex-direction: column;
+    padding: 5em 3em 2.125em;
+    overflow: scroll;
+}
+
+.allTasksContainer .allTasks h4 {
+    position: absolute;
+    top: 1.5em;
+    text-align: center;
+    left: 50%;
+    transform: translate(-50%, 0);
+}
+
+.allTasksContainer .allTasks .scheduledTasks {
+    max-height: 30em;
+    height: 30em;
+    overflow: scroll;
+    overflow-x: hidden;
+}
+
+.fileContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+}
+
+.fileContainer .uploadFileContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    flex-wrap: wrap;
+    width: 20em;
+}
+
+.fileContainer .uploadFileContainer form button {
+    width: 30em;
+    height: 3em;
+    font-size: 0.9em;
+    font-weight: 600;
+    color: #5E5E5E;
+    letter-spacing: 0.0875em;
+    border-radius: 0.875em;
+    border: none;
+    outline: none;
+    background: #242526;
+    padding: 0.5em 2em;
+    margin: 0.75em 0 0 0;
+    cursor: pointer;
+    box-shadow: rgb(0 0 0) 0px 20px 30px -10px;
+}
+
+.fileContainer .uploadFileContainer form button i {
+    margin-left: 0.75em;
+}
+
+.fileContainer .uploadFileContainer form button[type=submit] {
+    width: 12em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    margin-left: 9em;
+    background: #FA5200;
+    color: #FFF;
+    opacity: 0.825;
+    transition: all 0.5s ease-in-out;
+}
+
+.fileContainer .uploadFileContainer form button[type=submit]:hover {
+    opacity: 1;
+}
+
+.fileContainer .uploadFileContainer .ErrorBox {
+    width: 27em;
+    max-width: 30em;
+    background: red;
+    border-radius: 0.875em;
+    padding: 0.5em 1em;
+    border: 0.1875em solid darkred;
+    opacity: 0.75;
+    box-shadow: rgb(0 0 0) 0px 20px 30px -10px;
+    margin: 0.75em 0 0 0;
+}
+
+.fileContainer .uploadFileContainer .ErrorBox .ErrorMessage {
+    font-size: 0.7em;
+    letter-spacing: 0.05em;
+    font-weight: 400;
+    text-align: center;
+    color: darkred;
+}
+
+.fileContainer .bottomContainer .storageCapacity div {
+    width: 90%;
+    position: absolute;
+    bottom: 0;
+    border-radius: 0.875em;
+    background-image: linear-gradient(to top, #3F0D12, #A71D31);
+    z-index: 0;
+    margin: 0.5em;
+}
+
+.fileContainer .bottomContainer {
+    width: 65em;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    flex-wrap: wrap;
+}
+
+.fileContainer .bottomContainer .storageCapacity {
+    width: 18.75%;
+    height: 26.5em;
+    background: #242526;
+    border-radius: 0.875em;
+    margin: 0 1em;
+    position: relative;
+    box-shadow: rgb(0 0 0) 0px 20px 30px -10px;
+}
+
+.fileContainer .bottomContainer .storageCapacity .storageUsedText {
+    position: absolute;
+    bottom: 1em;
+    color: #FFF;
+    font-size: 0.725em;
+    font-weight: 500;
+    left: 50%;
+    letter-spacing: 0.025em;
+    z-index: 10;
+    opacity: 0.375;
+    transform: translate(-50%, 0);
+}
+
+.fileContainer .bottomContainer .uploadedFilesContainer {
+    margin: 1.5em 0;
+    overflow: scroll;
+    height: 26.5em;
+    width: 75%;
+}
+
+.fileContainer .bottomContainer .uploadedFilesContainer::-webkit-scrollbar {
+    display: none;
+}
+
+.fileContainer .bottomContainer .uploadedFilesContainer h4 {
+    text-align: center;
+    font-size: 1.5em;
+    letter-spacing: 0.125em;
+    font-weight: 600;
+    color: #5E5E5E;
+}
+
+.fileContainer .bottomContainer .uploadedFilesContainer .File {
+    padding: 0.5em 2em;
+}
+
+.fileContainer .bottomContainer .uploadedFilesContainer .File, .fileContainer .bottomContainer .uploadedFilesContainer .File .FileName {
+    width: 97.5%;
+    background: #242526;
+    margin: 0.75em 0;
+    border-radius: 0.875em;
+    color: #5E5E5E;
+    font-weight: 500;
+    letter-spacing: 0.0875em;
+}
+
+.fileContainer .bottomContainer .uploadedFilesContainer .File .FileName {
+    cursor: pointer;
+    font-size: 0.8em;
+    text-align: left;
+    border: none;
+    outline: none;
+    width: 75%;
+}
+
+.fileContainer .uploadedFilesContainer .File .statsAndButtons .FileSize {
+    font-size: 0.675em;
+    text-align: center;
+    margin-top: 1.25em;
+    font-weight: 400;
+}
+
+.fileContainer .bottomContainer .uploadedFilesContainer .File .statsAndButtons .Delete, .fileContainer .bottomContainer .uploadedFilesContainer .File .statsAndButtons .Download {
+    background: transparent;
+    font-size: 1em;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    color: #5E5E5E;
+    margin-left: 1.5em;
+    transition: all 0.375s ease-in-out;
+}
+
+.fileContainer .bottomContainer .uploadedFilesContainer .File .statsAndButtons .Delete:hover, .fileContainer .bottomContainer .uploadedFilesContainer .File .statsAndButtons .Download:hover {
+    opacity: 0.5;
+}
+
+.fileContainer .bottomContainer .uploadedFilesContainer .File .statsAndButtons {
+    float: right;
+    margin-top: 0.475em;
+}
+
+.imgContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+}
+
+.imgName {
+    text-align: center;
+    margin: 0.875em 0;
+    letter-spacing: 0.05em;
+    color: #5E5E5E;
+    font-weight: 600;
+    font-size: 0.95em;
+}
+
+.imgView, video {
+    height: 73.75vh;
+    margin: auto;
+    border-radius: 0.875em;
+    box-shadow: rgb(0 0 0) 0px 20px 30px -10px;
+}
+
+.returnToFiles {
+    text-align: center;
+    margin: 0.7em 0;
+    background: rgba(0, 136, 169, 0.725);
+    padding: 0.35em 2em;
+    font-size: 0.9em;
+    letter-spacing: 0.075em;
+    font-weight: 500;
+    color: #FFF;
+    width: 12.5em;
+    position: relative;
+    border-radius: 0.5em;
+    opacity: 0.875;
+    transition: all 0.375s ease-in-out;
+}
+
+.returnToFiles:hover {
+    opacity: 0.375;
+}
+
+.emptyUploads {
+    width: 97.5%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    position: relative;
+    background: #242526;
+    box-shadow: rgb(0 0 0) 0px 20px 30px -10px;
+    height: 23.245em;
+    margin: 1em 0;
+    border-radius: 0.875em;
+}
+
+.emptyUploads p {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #5E5E5E;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    font-size: 1.5em;
+}
+
+.emptyUploads p i {
+    margin-left: 0.5em;
+}
