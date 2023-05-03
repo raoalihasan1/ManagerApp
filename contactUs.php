@@ -40,19 +40,19 @@
                 }
                 ?>
                 <div class="inputClass">
-                    <input type="text" name="myName" id="myName" onfocus='changeBorderOnFocus("myName")' onblur='changeBorderOnBlur("myName")' value=<?php echo $_POST["myName"] ?>>
+                    <input type="text" name="myName" id="myName" onfocus='changeBorderOnFocus("myName")' onblur='changeBorderOnBlur("myName")' value='<?php echo isset($_POST["myName"]) ? $_POST["myName"] : ''  ?>'>
                     <label for="myName">Full Name</label>
                 </div>
                 <div class="inputClass">
-                    <input type="text" name="myEmail" id="myEmail" onfocus='changeBorderOnFocus("myEmail")' onblur='changeBorderOnBlur("myEmail")' value=<?php echo $_POST["myEmail"] ?>>
+                    <input type="text" name="myEmail" id="myEmail" onfocus='changeBorderOnFocus("myEmail")' onblur='changeBorderOnBlur("myEmail")' value='<?php echo isset($_POST["myEmail"]) ? $_POST["myEmail"] : ''  ?>'>
                     <label for="myEmail">Email Address</label>
                 </div>
                 <div class="inputClass">
-                    <input type="text" name="messageSubject" id="messageSubject" onfocus='changeBorderOnFocus("messageSubject")' onblur='changeBorderOnBlur("messageSubject")' value=<?php echo $_POST["messageSubject"] ?>>
+                    <input type="text" name="messageSubject" id="messageSubject" onfocus='changeBorderOnFocus("messageSubject")' onblur='changeBorderOnBlur("messageSubject")' value='<?php echo isset($_POST["messageSubject"]) ? $_POST["messageSubject"] : ''  ?>'>
                     <label for="messageSubject">Subject</label>
                 </div>
                 <div class="inputClass">
-                    <textarea name="messageContent" id="messageContent" cols="20" rows="1" onfocus='changeBorderOnFocus("messageContent")' onblur='changeBorderOnBlur("messageContent")'><?php echo $_POST["messageContent"] ?></textarea>
+                    <textarea name="messageContent" id="messageContent" cols="20" rows="1" onfocus='changeBorderOnFocus("messageContent")' onblur='changeBorderOnBlur("messageContent")'><?php echo isset($_POST["messageContent"]) ? $_POST["messageContent"] : ''  ?></textarea>
                     <label for="messageContent">Message</label>
                 </div>
                 <input type="submit" value="Contact Us" name="contactUs">

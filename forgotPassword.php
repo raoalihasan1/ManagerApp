@@ -37,7 +37,7 @@
                 }
                 ?>
                 <div class="inputClass">
-                    <input name="emailAddress" type="text" id="emailAddress" onfocus='changeBorderOnFocus("emailAddress")' onblur='changeBorderOnBlur("emailAddress")' value='<?php echo $_POST["emailAddress"] ?>'>
+                    <input name="emailAddress" type="text" id="emailAddress" onfocus='changeBorderOnFocus("emailAddress")' onblur='changeBorderOnBlur("emailAddress")' value='<?php echo isset($_POST["emailAddress"]) ? $_POST["emailAddress"] : ''  ?>'>
                     <label for="emailAddress">Email Address</label>
                 </div>
                 <input type="submit" value="Send Reset Link" name="forgotPassword" id="forgotPassword">
@@ -61,11 +61,11 @@
                 }
                 ?>
                 <div class="inputClass">
-                    <input name="newPassword" type="password" id="newPassword" onfocus='changeBorderOnFocus("newPassword")' onblur='changeBorderOnBlur("newPassword")' value='<?php echo $_POST["newPassword"] ?>'>
+                    <input name="newPassword" type="password" id="newPassword" onfocus='changeBorderOnFocus("newPassword")' onblur='changeBorderOnBlur("newPassword")' value='<?php echo isset($_POST["newPassword"]) ? $_POST["newPassword"] : ''  ?>'>
                     <label for="newPassword">New Password</label>
                 </div>
                 <div class="inputClass">
-                    <input name="confirmNewPassword" type="password" id="confirmNewPassword" onfocus='changeBorderOnFocus("confirmNewPassword")' onblur='changeBorderOnBlur("confirmNewPassword")' value='<?php echo $_POST["confirmNewPassword"] ?>'>
+                    <input name="confirmNewPassword" type="password" id="confirmNewPassword" onfocus='changeBorderOnFocus("confirmNewPassword")' onblur='changeBorderOnBlur("confirmNewPassword")' value='<?php echo isset($_POST["confirmNewPassword"]) ? $_POST["confirmNewPassword"] : ''  ?>'>
                     <label for="confirmNewPassword">Confirm New Password</label>
                 </div>
                 <input id="resetPassword" name="resetPassword" type="submit" value="Reset Password">

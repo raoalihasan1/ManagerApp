@@ -42,11 +42,11 @@
                     <label for="disabledEmailAddress">Email Address</label>
                 </div>
                 <div class="inputClass">
-                    <input type="password" id="changePassword" name="changePassword" onfocus='changeBorderOnFocus("changePassword")' onblur='changeBorderOnBlur("changePassword")' value='<?php echo $_POST["changePassword"] ?>'>
+                    <input type="password" id="changePassword" name="changePassword" onfocus='changeBorderOnFocus("changePassword")' onblur='changeBorderOnBlur("changePassword")' value='<?php echo isset($_POST["changePassword"]) ? $_POST["changePassword"] : ''  ?>'>
                     <label for="changePassword">New Password</label>
                 </div>
                 <div class="inputClass">
-                    <input type="password" id="confirmChangePassword" name="confirmChangePassword" onfocus='changeBorderOnFocus("confirmChangePassword")' onblur='changeBorderOnBlur("confirmChangePassword")' value='<?php echo $_POST["confirmChangePassword"] ?>'>
+                    <input type="password" id="confirmChangePassword" name="confirmChangePassword" onfocus='changeBorderOnFocus("confirmChangePassword")' onblur='changeBorderOnBlur("confirmChangePassword")' value='<?php echo isset($_POST["confirmChangePassword"]) ? $_POST["confirmChangePassword"] : ''  ?>'>
                     <label for="confirmChangePassword">Confirm New Password</label>
                 </div>
                 <input type="submit" value="Update Details" name="updateDetails">

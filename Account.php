@@ -47,11 +47,12 @@
                 }
                 ?>
                 <div class="inputClass">
-                    <input name="existingEmail" type="text" id="existingEmail" onfocus='changeBorderOnFocus("existingEmail")' onblur='changeBorderOnBlur("existingEmail")' value='<?php echo $_POST["existingEmail"] ?>'>
+                    <input name="existingEmail" type="text" id="existingEmail" onfocus='changeBorderOnFocus("existingEmail")' onblur='changeBorderOnBlur("existingEmail")' value="<?php echo isset($_POST["existingEmail"]) ? $_POST["existingEmail"] : '' ?>" />
                     <label for="existingEmail">Email Address</label>
                 </div>
                 <div class="inputClass">
-                    <input name="existingPassword" type="password" id="existingPassword" onfocus='changeBorderOnFocus("existingPassword")' onblur='changeBorderOnBlur("existingPassword")' value='<?php echo $_POST["existingPassword"] ?>'>
+                    <input name="existingPassword" type="password" id="existingPassword" onfocus='changeBorderOnFocus("existingPassword")' onblur='changeBorderOnBlur("existingPassword")' value="<?php echo isset($_POST["existingPassword"]) ? $_POST["existingPassword"] : '' ?>" />
+
                     <label for="existingPassword">Password</label>
                 </div>
                 <input type="submit" value="Sign In" name="logIn" id="logIn">
@@ -78,19 +79,19 @@
                 }
                 ?>
                 <div class="inputClass">
-                    <input name="fullName" type="text" id="fullName" onfocus='changeBorderOnFocus("fullName")' onblur='changeBorderOnBlur("fullName")' value='<?php echo $_POST["fullName"] ?>'>
+                    <input name="fullName" type="text" id="fullName" onfocus='changeBorderOnFocus("fullName")' onblur='changeBorderOnBlur("fullName")' value='<?php echo isset($_POST["fullName"]) ? $_POST["fullName"] : '' ?>'>
                     <label for="fullName">Full Name</label>
                 </div>
                 <div class="inputClass">
-                    <input name="newEmail" type="text" id="newEmail" onfocus='changeBorderOnFocus("newEmail")' onblur='changeBorderOnBlur("newEmail")' value='<?php echo $_POST["newEmail"] ?>'>
+                    <input name="newEmail" type="text" id="newEmail" onfocus='changeBorderOnFocus("newEmail")' onblur='changeBorderOnBlur("newEmail")' value='<?php echo isset($_POST["newEmail"]) ? $_POST["newEmail"] : '' ?>'>
                     <label for="newEmail">Email Address</label>
                 </div>
                 <div class="inputClass">
-                    <input name="newPassword" type="password" id="newPassword" onfocus='changeBorderOnFocus("newPassword")' onblur='changeBorderOnBlur("newPassword")' value='<?php echo  $_POST["newPassword"] ?>'>
+                    <input name="newPassword" type="password" id="newPassword" onfocus='changeBorderOnFocus("newPassword")' onblur='changeBorderOnBlur("newPassword")' value='<?php echo isset($_POST["newPassword"]) ? $_POST["newPassword"] : ''  ?>'>
                     <label for="newPassword">Password</label>
                 </div>
                 <div class="inputClass">
-                    <input name="confirmNewPassword" type="password" id="confirmNewPassword" onfocus='changeBorderOnFocus("confirmNewPassword")' onblur='changeBorderOnBlur("confirmNewPassword")' value='<?php echo $_POST["confirmNewPassword"] ?>'>
+                    <input name="confirmNewPassword" type="password" id="confirmNewPassword" onfocus='changeBorderOnFocus("confirmNewPassword")' onblur='changeBorderOnBlur("confirmNewPassword")' value='<?php echo isset($_POST["confirmNewPassword"]) ? $_POST["confirmNewPassword"] : ''  ?>'>
                     <label for="confirmNewPassword">Confirm Password</label>
                 </div>
                 <input id="signUp" name="signUp" type="submit" value="Sign Up">

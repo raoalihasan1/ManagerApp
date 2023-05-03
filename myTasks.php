@@ -21,11 +21,11 @@
             <div class="newTasks">
                 <form method="post">
                     <div class="inputTask">
-                        <input name="taskTitle" type="text" placeholder="Add Title" id="taskTitle" required value="<?php echo $_POST["taskTitle"] ?>">
+                        <input name="taskTitle" type="text" placeholder="Add Title" id="taskTitle" required value="<?php echo isset($_POST["taskTitle"]) ? $_POST["taskTitle"] : ''  ?>">
                     </div>
                     <div class="inputTask">
                         <label for="taskDate"><i class="fa-solid fa-clock" style="margin-left: 0.45em"></i></label>
-                        <input type="datetime-local" id="taskDate" name="taskDate" required value="<?php echo $_POST["taskDate"] ?>">
+                        <input type="datetime-local" id="taskDate" name="taskDate" required value="<?php echo isset($_POST["taskDate"]) ? $_POST["taskDate"] : ''  ?>">
                     </div>
                     <div class="inputTask">
                         <label for="Description"><i class="fa-solid fa-circle-info"></i></label>
