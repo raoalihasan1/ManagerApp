@@ -34,7 +34,7 @@
                 }
                 ?>
                 <div class="inputClass">
-                    <input type="text" name="disabledFullName" value="<?php echo  getUser($_SESSION["Email"])["Full Name"] ?>" disabled>
+                    <input type="text" name="disabledFullName" value="<?php echo  getUser($_SESSION["Email"])["Name"] ?>" disabled>
                     <label for="disabledFullName">Full Name</label>
                 </div>
                 <div class="inputClass">
