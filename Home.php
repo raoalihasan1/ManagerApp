@@ -47,7 +47,7 @@
             <button class="getStarted" onclick="window.location.href = 'Account.php'"><span>Get Started</span></button>
         </div>
         <div class="lowerContainer" style="order: 3; background-image: url('Images/storageImage.png'); background-repeat: no-repeat; background-size: 110px; background-position: 50% 120%;">
-            Store Your Files Altogether In One Location For Free Up To 20GB Storage
+            Store Your Files Altogether In One Location For Free Up To 10GB Storage
         </div>
         <div class="lowerContainer" style="order: 2; background-image: url('Images/noteImage.png'); background-repeat: no-repeat; background-size: 110px; background-position: 50% 99.125%;">
             Create, Change And Delete Your Notes To Make Learning And Working Easier
