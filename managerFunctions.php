@@ -310,7 +310,7 @@ function forgotPassword(string $emailAddress): array
         } else {
             $Hash = getHash();
             $_SESSION["newHash"] = $Hash;
-            if (!sendResetPasswordEmail($queryResult["Email"], $queryResult["Full Name"], $_SESSION["newHash"])) {
+            if (!sendResetPasswordEmail($queryResult["Email"], $queryResult["Name"], $_SESSION["newHash"])) {
                 array_push($forgotPasswordErrors, "Failed To Send Reset Password Email! Please Try Again");
                 echo '<style> label[for="emailAddress"] { font-size: 0.65em; top: 10px; opacity: 0.5; } </style>';
             } else {
@@ -949,6 +949,7 @@ function getUploadedFiles(String $Email): void
         $_SESSION["StorageUsed"] = round($TotalSizeInGB / 1024, 2);
     } else {
         echo "<div class=emptyUploads><p>Begin Uploading Now<i class='fa-solid fa-upload'></i></p></div><style> .uploadedFilesContainer { overflow: visible !important; } </style>";
+        $_SESSION["StorageUsed"] = 0;
     }
 }
 
