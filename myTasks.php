@@ -29,7 +29,7 @@
                     </div>
                     <div class="inputTask">
                         <label for="Description"><i class="fa-solid fa-circle-info"></i></label>
-                        <textarea rows="3" name="Description" placeholder="Add Description"><?php echo $_POST["Description"] ?></textarea>
+                        <textarea rows="3" name="Description" placeholder="Add Description"><?php echo isset($_POST["Description"]) ? $_POST["Description"] : ''  ?></textarea>
                     </div>
                     <div class="inputTask">
                         <div class="multipleInput">
@@ -58,17 +58,19 @@
                 <h4>Upcoming Task</h4>
                 <?php
                 $Task = upComingTask($_SESSION["Email"]);
-                list($Date, $Time) = explode(" ", $Task["Scheduled"]);
-                if ($Time >= "12:00:00") {
-                    $timeOfDay = "pm";
-                } else {
-                    $timeOfDay = "am";
-                }
-                $Time = date("h:i", strtotime($Time));
-                if (!empty($Task["Description"])) {
-                    echo "<p id=upcomingTitle><span id=upcomingPriority Count=0>" . convertPriority($Task["Priority"], 0) . "</span>" . $Task["Title"] . "</p><p id=upcomingDate>" . date("d-m-Y", strtotime($Date)) . " at " . substr($Time, 0, 5) . $timeOfDay . "</p><p id=upcomingDescription>" . $Task["Description"] . "</p>";
-                } else {
-                    echo "<p id=upcomingTitle><span id=upcomingPriority Count=0>" . convertPriority($Task["Priority"], 0) . "</span>" . $Task["Title"] . "</p><p id=upcomingDate>" . date("d-m-Y", strtotime($Date)) . " at " . substr($Time, 0, 5) . $timeOfDay . "</p>";
+                if (!empty($Task)) {
+                    list($Date, $Time) = explode(" ", $Task["Scheduled"]);
+                    if ($Time >= "12:00:00") {
+                        $timeOfDay = "pm";
+                    } else {
+                        $timeOfDay = "am";
+                    }
+                    $Time = date("h:i", strtotime($Time));
+                    if (!empty($Task["Description"])) {
+                        echo "<p id=upcomingTitle><span id=upcomingPriority Count=0>" . convertPriority($Task["Priority"], 0) . "</span>" . $Task["Title"] . "</p><p id=upcomingDate>" . date("d-m-Y", strtotime($Date)) . " at " . substr($Time, 0, 5) . $timeOfDay . "</p><p id=upcomingDescription>" . $Task["Description"] . "</p>";
+                    } else {
+                        echo "<p id=upcomingTitle><span id=upcomingPriority Count=0>" . convertPriority($Task["Priority"], 0) . "</span>" . $Task["Title"] . "</p><p id=upcomingDate>" . date("d-m-Y", strtotime($Date)) . " at " . substr($Time, 0, 5) . $timeOfDay . "</p>";
+                    }
                 }
                 ?>
             </div>
