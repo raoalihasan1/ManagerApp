@@ -52,7 +52,7 @@ function getResponseOfBot(userInput) {
       userInput.includes("sent") ||
       userInput.includes("confirmation") ||
       userInput.includes("reset") ||
-      userInput.includes("recieved")) &&
+      userInput.includes("received")) &&
     (userInput.includes("email") || userInput.includes("address"))
   ) {
     returnResponse +=
