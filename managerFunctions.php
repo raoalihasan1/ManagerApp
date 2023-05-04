@@ -647,22 +647,16 @@ function addNewNote(String $noteTitle, String $Note, String $bgColor): void
 
     date_default_timezone_set('Europe/London');
     $currentDateTime = date('Y-m-d H:i:s');
-    $encryptedNote = encryptNote($Note);
     $myEmail = $_SESSION["Email"];
     if (isset($_SESSION['noteID'])) {
         $getID = $_SESSION['noteID'];
-        if (mysqli_query($connectToDB, "UPDATE encryptNoteDetails SET encryptKey = '$encryptedNote[0]', encryptIV = '$encryptedNote[1]' WHERE NoteID ='$getID'")) {
-            if (mysqli_query($connectToDB, "UPDATE Notes SET Title = '$noteTitle', Note = '$encryptedNote[2]', LastUpdated = '$currentDateTime', Background = '$bgColor' WHERE NoteID = '$getID'")) {
-                unset($_SESSION['noteID']);
-                header("Location: myTasks.php");
-            }
+        if (mysqli_query($connectToDB, "UPDATE Notes SET Title = '$noteTitle', Note = '$Note', LastUpdated = '$currentDateTime', Background = '$bgColor' WHERE NoteID = '$getID'")) {
+            unset($_SESSION['noteID']);
+            header("Location: myTasks.php");
         }
     } else {
-        if (mysqli_query($connectToDB, "INSERT INTO Notes (Title, Note, LastUpdated, Background, Email) VALUES ('$noteTitle', '$encryptedNote[2]', '$currentDateTime', '$bgColor', '$myEmail')")) {
-            $getNoteID = mysqli_insert_id($connectToDB);
-            if (mysqli_query($connectToDB, "INSERT INTO encryptNoteDetails (NoteID, encryptKey, encryptIV) VALUES ('$getNoteID', '$encryptedNote[0]', '$encryptedNote[1]')")) {
-                header("Location: myTasks.php");
-            }
+        if (mysqli_query($connectToDB, "INSERT INTO Notes (Title, Note, LastUpdated, Background, Email) VALUES ('$noteTitle', '$Note', '$currentDateTime', '$bgColor', '$myEmail')")) {
+            header("Location: myTasks.php");
         }
     }
 }
@@ -679,13 +673,12 @@ function addNewNote(String $noteTitle, String $Note, String $bgColor): void
 function getNotes(String $Email, array $encryptionDetails): void
 {
     global $connectToDB;
-    $getNotes = mysqli_query($connectToDB, "SELECT Notes.NoteID, Notes.Title, Notes.Note, Notes.LastUpdated, Notes.Background, encryptNoteDetails.encryptKey, encryptNoteDetails.encryptIV FROM Notes INNER JOIN encryptNoteDetails ON Notes.NoteID = encryptNoteDetails.NoteID WHERE Notes.Email = '$Email' ORDER BY LastUpdated DESC");
+    $getNotes = mysqli_query($connectToDB, "SELECT Notes.NoteID, Notes.Title, Notes.Note, Notes.LastUpdated, Notes.Background FROM Notes WHERE Notes.Email = '$Email' ORDER BY LastUpdated DESC");
     if ($getNotes && mysqli_num_rows($getNotes) > 0) {
         $X = 0;
         echo "<div class=notesControl>";
         while ($Row = mysqli_fetch_assoc($getNotes)) {
-            $decryptedNote = decryptNote($Row["Note"], $Row["encryptKey"], $Row["encryptIV"]);
-            echo '<div id=myNote style=background:' . $Row['Background'] . '><p class=noteTitle>' . $Row['Title'] . '<span class=lastUpdated>' . timeNoteLastUpdated($Row["LastUpdated"]) . '</span></p><p class=theNote>' . nl2br($decryptedNote) . '</p><form method=post><button type=submit name=editNote class=editNote value=' . $encryptionDetails[$X][0] . '><i class="fa-solid fa-keyboard"></i>Edit</button><button type=submit class=deleteNote value=' . $encryptionDetails[$X][0] . ' name=deleteNote><i class="fa-solid fa-delete-left"></i>Delete</button></form></div>';
+            echo '<div id=myNote style=background:' . $Row['Background'] . '><p class=noteTitle>' . $Row['Title'] . '<span class=lastUpdated>' . timeNoteLastUpdated($Row["LastUpdated"]) . '</span></p><p class=theNote>' . nl2br($Row["Note"]) . '</p><form method=post><button type=submit name=editNote class=editNote value=' . $encryptionDetails[$X][0] . '><i class="fa-solid fa-keyboard"></i>Edit</button><button type=submit class=deleteNote value=' . $encryptionDetails[$X][0] . ' name=deleteNote><i class="fa-solid fa-delete-left"></i>Delete</button></form></div>';
             $X++;
         }
         echo "</div>";
@@ -717,37 +710,6 @@ function deleteNote(String $btnValue, array $encryptionDetails): void
 
 
 /**
- * Encrypts a given note using AES-128-CBC encryption.
- * 
- * @param string $valueToEncrypt The value to be encrypted.
- * 
- * @return array An array containing the encryption key, initialization vector, and encrypted text.
- */
-function encryptNote(String $valueToEncrypt): array
-{
-    $randomKey = random_bytes(16);
-    $randomIV = openssl_random_pseudo_bytes(openssl_cipher_iv_length('AES-128-CBC'));
-    $cipherText = openssl_encrypt($valueToEncrypt, 'AES-128-CBC', $randomKey, $options = 0, $randomIV);
-    return array($randomKey, $randomIV, $cipherText);
-}
-
-
-/**
- * Decrypts a given encrypted note using AES-128-CBC decryption.
- * 
- * @param string $valueToDecrypt The value to be decrypted.
- * @param string $randomKey The encryption key.
- * @param string $randomIV The initialization vector.
- * 
- * @return string The decrypted note.
- */
-function decryptNote(String $valueToDecrypt, String $randomKey, String $randomIV): string
-{
-    return openssl_decrypt($valueToDecrypt, 'AES-128-CBC', $randomKey, $options = 0, $randomIV);
-}
-
-
-/**
  * Retrieves a single note from the database for editing.
  * 
  * @param string $noteID The ID of the note to be retrieved.
@@ -761,12 +723,11 @@ function getEditingNote(String $noteID, array $encryptionDetails): array
     for ($X = 0; $X < count($encryptionDetails); $X++) {
         if ($encryptionDetails[$X][0] == $noteID) {
             $noteID = decryptNoteKey($X, $encryptionDetails);
-            $getNote =  mysqli_query($connectToDB, "SELECT Notes.NoteID, Notes.Title, Notes.Note, Notes.Background, encryptNoteDetails.encryptKey, encryptNoteDetails.encryptIV FROM Notes INNER JOIN encryptNoteDetails ON Notes.NoteID = encryptNoteDetails.NoteID WHERE Notes.NoteID = '$noteID'");
+            $getNote =  mysqli_query($connectToDB, "SELECT Notes.NoteID, Notes.Title, Notes.Note, Notes.Background FROM Notes WHERE Notes.NoteID = '$noteID'");
             if (mysqli_num_rows($getNote) > 0) {
                 while ($Row = mysqli_fetch_assoc($getNote)) {
-                    $decryptedNote = decryptNote($Row["Note"], $Row["encryptKey"], $Row["encryptIV"]);
                     $_SESSION["noteID"] = $noteID;
-                    return array($Row["Title"], $decryptedNote, $Row["Background"]);
+                    return array($Row["Title"], $Row["Note"], $Row["Background"]);
                 }
             }
         }
