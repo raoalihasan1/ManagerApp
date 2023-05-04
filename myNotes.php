@@ -48,7 +48,7 @@
                 <div class="btnContainer">
                     <div class="btnForStyle">
                         <input id="colorPicker" name="colorPicker" type="color" value="#242526" onchange="document.getElementById('newNoteForm').style.background = document.getElementById('colorPicker').value;">
-                        <label for="colorPicker">Change Background Colour</label>
+                        <label for="colorPicker">Change Background Color</label>
                     </div>
                     <div class="btnForForm">
                         <button type="button" onclick="showHideNewNote(document.getElementById('newNoteContainer'), document.getElementById('navBarHeader'), document.getElementById('notesPageContainer')); closeEditMode();"><i class="fa-solid fa-xmark"></i>Close</button>
@@ -56,7 +56,6 @@
                     </div>
                 </div>
             </form>
-
         </div>
     </div>
 </body>
